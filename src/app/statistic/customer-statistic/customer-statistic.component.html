@@ -1,0 +1,250 @@
+<!--&lt;!&ndash;<body style="background-color:  #f6f6f9; margin-top: 100px">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<selector>&ndash;&gt;-->
+<!--<div class="container">-->
+<!--    <form [formGroup]="formSearch" (ngSubmit)="search()" class="exam-container form-group" id="flex-grow"-->
+<!--          style="opacity: 1;">-->
+<!--        <h2 class="text-center pt-2" style="color:#270082; ">Thống kê khách hàng tiềm năng</h2>-->
+<!--        <div class="combobox1">-->
+<!--            <span>Từ tháng</span>-->
+<!--            <div class="select1">-->
+<!--                &lt;!&ndash;      <input type="search" name="fromMonth" formControlName="fromMonth">&ndash;&gt;-->
+<!--                <select class="form-select" aria-label="Default select example" name="fromMonth"-->
+<!--                        formControlName="fromMonth">-->
+<!--                    <option value="1">01</option>-->
+<!--                    <option value="2">02</option>-->
+<!--                    <option value="3">03</option>-->
+<!--                    <option value="4">04</option>-->
+<!--                    <option value="5">05</option>-->
+<!--                    <option value="6">06</option>-->
+<!--                    <option value="7">07</option>-->
+<!--                    <option value="8">08</option>-->
+<!--                    <option value="9">09</option>-->
+<!--                    <option value="10">10</option>-->
+<!--                    <option value="11">11</option>-->
+<!--                    <option value="12">12</option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="combobox2">-->
+<!--            <span>Đến tháng</span>-->
+<!--            <div class="select2">-->
+<!--                &lt;!&ndash;      <input type="search" name="toMonth" formControlName="toMonth">&ndash;&gt;-->
+<!--                <select class="form-select" aria-label="Default select example" name="toMonth"-->
+<!--                        formControlName="toMonth">-->
+<!--                    <option value="1">01</option>-->
+<!--                    <option value="2">02</option>-->
+<!--                    <option value="3">03</option>-->
+<!--                    <option value="4">04</option>-->
+<!--                    <option value="5">05</option>-->
+<!--                    <option value="6">06</option>-->
+<!--                    <option value="7">07</option>-->
+<!--                    <option value="8">08</option>-->
+<!--                    <option value="9">09</option>-->
+<!--                    <option value="10">10</option>-->
+<!--                    <option value="11">11</option>-->
+<!--                    <option value="12">12</option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="combobox3">-->
+<!--            <span>Năm</span>-->
+<!--            <div class="select3">-->
+<!--                &lt;!&ndash;      <input type="search" name="year" formControlName="year">&ndash;&gt;-->
+<!--                <select class="form-select" aria-label="Default select example" name="year" formControlName="year" (click)="getYearSearch()">-->
+<!--                    <option value="" disabled>Chọn năm</option>-->
+<!--                    <option *ngFor="let year of yearListSearch">{{year}}</option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <button style="margin-left: 10px" class="bt btn__delete">Tìm kiếm</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+<!--< style="width:100%; height:300px; overflow:auto;" class="table-responsive">-->
+<!--    <table class="table table-hover">-->
+<!--        <thead style="background-color: #270082; color: #e6ebf1; overflow: hidden; white-space: nowrap;">-->
+<!--        <tr>-->
+<!--            <th scope="col">Mã KH</th>-->
+<!--            <th scope="col">Tên khách hàng</th>-->
+<!--            <th scope="col">SL đơn hàng (đơn)</th>-->
+<!--            <th scope="col">Tổng giá trị (VNĐ)</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let customer of customers1">-->
+<!--            <th scope="row">{{customer[0]}}</th>-->
+<!--            <td>{{customer[1]}}</td>-->
+<!--            <td>{{customer[2]}}</td>-->
+<!--            <td>{{customer[3]}}</td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+<!--&lt;!&ndash;</selector>&ndash;&gt;-->
+<!--<footer>-->
+<!--    &lt;!&ndash;  <div *ngIf="totalItems > 5">&ndash;&gt;-->
+<!--    &lt;!&ndash;    <pagination-controls (pageChange)="getAllCustomer($event)"></pagination-controls>&ndash;&gt;-->
+<!--    &lt;!&ndash;  </div>&ndash;&gt;-->
+<!--    <div class="button">-->
+<!--        <button style="margin-right: 100px" type="button" (click)="chartCustomer()" class="btn__primary"-->
+<!--                data-toggle="modal" data-target="#modalChartHuyen">Xem-->
+<!--        </button>-->
+<!--        <button class="bt btn__delete" (click)="exportPDF()">In</button>-->
+<!--        <button style="margin-left: 160px" class="bt btn__cancel">Trở về</button>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;  <br><br><br>&ndash;&gt;-->
+<!--    &lt;!&ndash;  <div class="row button__container text-center">&ndash;&gt;-->
+<!--    &lt;!&ndash;    <div class="col-md-3">&ndash;&gt;-->
+<!--    &lt;!&ndash;      <button style="margin-left: 550px" class="bt btn__delete" (click)="exportPDF()">In</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <div class="col-md-3">&ndash;&gt;-->
+<!--    &lt;!&ndash;      <button style="margin-left: 450px" class="bt btn__cancel">Trở về</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <div class="col-md-2"></div>&ndash;&gt;-->
+<!--    &lt;!&ndash;  </div>&ndash;&gt;-->
+<!--</footer>-->
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="modalChartHuyen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content" style="width: 150%; transform: translate(-15%);">-->
+<!--            <div class="modal-header">-->
+<!--                <h2 class="modal-title text-primary" id="exampleModalLabel">Biểu đồ thống kê khách hàng tiềm năng</h2>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <div>-->
+<!--                    <canvas id="canvas">{{chart}}</canvas>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+
+<div class="container">
+    <form [formGroup]="formSearch" (ngSubmit)="search()" class="exam-container form-group" id="flex-grow"
+          style="opacity: 1;">
+        <h2 class="text-center pt-2" style="color:#270082;">Thống kê khách hàng tiềm năng</h2>
+        <div class="row mt-3">
+            <div class="col-md-3 input-group">
+                <span style="margin-right: 5px; margin-left: 10px">Từ tháng:</span>
+                <select style="width: 50%; height: 50%" class="form-select" aria-label="Default select example"
+                        name="fromMonth"
+                        formControlName="fromMonth">
+                    <option value="" disabled>Chọn tháng</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+
+
+            <div class="col-md-3 input-group">
+                <span style="margin-right: 5px">Đến tháng:</span>
+                <select style="width: 50%; height: 50%" class="form-select" aria-label="Default select example"
+                        name="toMonth"
+                        formControlName="toMonth">
+                    <option value="" disabled>Chọn tháng</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <div class="col-md-3 input-group">
+                <span style="margin-right: 5px">Năm:</span>
+                <select style="width: 40%; height: 50%" class="form-select" aria-label="Default select example"
+                        name="year" formControlName="year">
+                    <option value="" disabled>Chọn năm</option>
+                    <option *ngFor="let year of yearListSearch">{{year}}</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button class="btn__delete mt-2 ml-1" type="submit">Tìm kiếm</button>
+            </div>
+        </div>
+
+
+        <br>
+        <div style="width:100%; height:300px; overflow:auto;" class="table-responsive">
+            <table class="table table-hover">
+                <thead style="background-color: #270082; color: #e6ebf1; overflow: hidden; white-space: nowrap;">
+                <tr>
+                    <th scope="col">Mã KH</th>
+                    <th scope="col">Tên khách hàng</th>
+                    <th scope="col">SL đơn hàng (đơn)</th>
+                    <th scope="col">Tổng giá trị (VNĐ)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let customer of customers1">
+                    <th scope="row">{{customer[0]}}</th>
+                    <td>{{customer[1]}}</td>
+                    <td>{{customer[2]}}</td>
+                    <td>{{customer[3]}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row  py-3">
+            <div class="col-md-4 text-center">
+                <button type="button"
+                        (click)="chartCustomer()"
+                        class="btn__primary"
+                        data-toggle="modal"
+                        data-target="#modalChart">
+                    Xem
+                </button>
+            </div>
+            <div class="col-md-4 text-center">
+                <button class="bt btn__delete" (click)="exportPDF()">In</button>
+            </div>
+            <div class="col-md-4 text-center">
+                <button class="bt btn__cancel">Trở về</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+<!--+++++++++++++++modal+++++++++++++++++=-->
+<!-- Modal -->
+<div class="modal fade" id="modalChart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 150%; transform: translate(-15%);">
+            <div class="modal-header">
+                <h2 class="modal-title text-primary" id="exampleModalLabel">Biểu đồ thống kê vật tư</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <canvas id="canvas">{{chart}}</canvas>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
